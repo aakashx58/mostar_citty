@@ -1,0 +1,47 @@
+/* Scroll rig: a tall section with a sticky 100vh stage that the animator scrubs. */
+
+.cinema-scroll {
+  position: relative;
+  height: calc(100vh + 3700px);
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #7fb4d4;
+}
+
+.world,
+.back-stack,
+.sky-img,
+.shade,
+.scene-img,
+.site-header,
+.sights-slider,
+.sights-controls,
+.hero-title,
+.intro-copy,
+.story-panel {
+  position: absolute;
+}
+
+.world {
+  inset: 0;
+  overflow: hidden;
+  background: #79b7dd;
+}
+
+.shade {
+  inset: 0;
+  z-index: var(--shade-z);
+  pointer-events: none;
+  opacity: var(--shade-opacity);
+  background: linear-gradient(180deg,
+    rgba(var(--blur-tint), var(--shade-top-alpha)) 0%,
+    rgba(var(--blur-tint), var(--shade-mid-alpha)) 48%,
+    rgba(var(--blur-tint), var(--shade-bottom-alpha)) 100%);
+}

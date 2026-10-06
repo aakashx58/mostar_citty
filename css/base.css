@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  background: #0b1110;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  overflow-x: clip;
+  background: #0b1110;
+}
+
+button {
+  border: 0;
+  font: inherit;
+}
+
+.site-shell {
+  min-height: 100vh;
+}

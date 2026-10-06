@@ -1,0 +1,151 @@
+/* Infinite sights slider. Lives inside .back-stack, counter-scaled by 1 / backScale. */
+
+.sights-slider {
+  left: 0;
+  right: 0;
+  top: var(--sights-top);
+  z-index: 2;
+  padding: 0;
+  opacity: 1; /* fade-in is visibility + X translate, not opacity */
+  visibility: var(--sights-visibility);
+  transform: translate3d(var(--sights-enter-x), var(--sights-y), 0) scale(var(--sights-scale));
+  transform-origin: 0 0;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.sights-track {
+  display: flex;
+  gap: clamp(16px, 1.15vw, 24px);
+  align-items: stretch;
+  transform: translate3d(calc(var(--sights-shift) - 18vw), 0, 0);
+  transition: transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.sights-track.is-jumping {
+  transition: none;
+}
+
+/* ---- Card ---- */
+
+.sight-card {
+  position: relative;
+  flex: 0 0 clamp(360px, 19.4vw, 430px);
+  height: 220px;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(253, 241, 225, 0.42);
+  border-radius: 24px;
+  color: #000;
+  background: #fdf1e1;
+  box-shadow: 0 18px 52px rgba(2, 47, 64, 0.12);
+  backdrop-filter: none;
+  cursor: pointer;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.sight-card::before,
+.sight-card::after {
+  content: none;
+}
+
+.sight-card:focus-visible,
+.sight-card.is-active {
+  outline: none;
+}
+
+.sight-kicker,
+.sight-card h3,
+.sight-card p {
+  position: relative;
+  z-index: 1;
+  text-shadow: none;
+}
+
+.sight-kicker {
+  display: block;
+  margin-bottom: 56px;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.sight-pin {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 67.2px;
+  height: 67.2px;
+  pointer-events: none;
+}
+
+.sight-card h3 {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: calc(24px + (16px * 1.16 * 2) + 12px);
+  max-width: calc(100% - 76px);
+  margin: 0;
+  color: #000;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 0.95;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sight-card p {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  max-width: 100%;
+  margin: 12px 0 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.16;
+  display: -webkit-box;
+  max-height: calc(2em * 1.16);
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* ---- Controls ---- */
+
+.sights-controls {
+  left: 48px;
+  right: auto;
+  top: calc(var(--sights-screen-top) + 220px + 16px);
+  z-index: 5;
+  display: flex;
+  justify-content: flex-start;
+  gap: 14px;
+  opacity: var(--sights-controls-opacity);
+  transform: translate3d(0, var(--sights-y), 0);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.sights-controls.is-ready {
+  pointer-events: auto;
+}
+
+.sight-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  color: #111411;
+  background: rgba(253, 241, 225, 0.94);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
