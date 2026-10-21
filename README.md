@@ -2,6 +2,8 @@
 
 Vanilla HTML/CSS/JS, no build step. All images and fonts load from remote URLs.
 
+<img width="1898" height="894" alt="image" src="https://github.com/user-attachments/assets/621b3521-b3ef-4ff7-ad3d-1d16123f5685" />
+
 ## Run
 
 ES modules don't load over `file://`, so serve the folder:
